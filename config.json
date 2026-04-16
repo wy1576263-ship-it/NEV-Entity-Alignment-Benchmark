@@ -1,0 +1,36 @@
+{
+  "project_meta": {
+    "name": "NEV_KGQA_Pipeline",
+    "version": "2.1.0",
+    "description": "Knowledge Graph QA for New Energy Vehicles",
+    "author": "Confidential (Anonymous for Review)"
+  },
+  "environment": {
+    "hardware_platform": "Intel i7-11850H",
+    "python_version": "3.8.10",
+    "random_seed": 42
+  },
+  "hyperparameters": {
+    "BERT_BiLSTM_CRF": {
+      "transformer_layers": 12,
+      "learning_rate": 3e-5,
+      "batch_size": 256,
+      "epochs": 240,
+      "early_stopping": true,
+      "description": "Extracts global semantic representations and temporal dependencies."
+    },
+    "TextCNN_Intent_Module": {
+      "kernel_sizes": [2, 3, 4],
+      "filters": 128,
+      "dropout_rate": 0.5,
+      "description": "Prevents overfitting in the intent classification layer and extracts multi-scale features."
+    }
+  },
+  "alignment_strategy": {
+    "weights": {
+      "alpha_dice": 0.70,
+      "beta_cosine": 0.30
+    },
+    "note": "Weights are distributed to address high prevalence of synonymous terms and morphological variations in NEV domain."
+  }
+}
