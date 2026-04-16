@@ -1,18 +1,18 @@
 {
   "project_meta": {
     "name": "NEV_KGQA_Pipeline",
-    "version": "2.1.0",
+    "version": "2.1.2",
     "description": "Knowledge Graph QA for New Energy Vehicles",
-    "author": "Confidential (Anonymous for Review)"
+    "last_update": "2026-04-16"
   },
   "environment": {
-    "os": "Windows 11", 
-    "hardware_platform": "Intel i7-11850H",
-    "gpu": "None (CPU only for reproduction)",
+    "os": "Windows 10 (64-bit)",
+    "hardware_platform": "Intel(R) Core(TM) i7-11850H",
+    "gpu": "None (Inference validated on CPU)",
     "python_version": "3.8.10",
-    "environment_manager": "MiniConda",
-    "dl_framework": "TensorFlow",
-    "graph_database": "Neo4j",
+    "ide": "PyCharm Professional 2021",
+    "dl_framework": "TensorFlow 2.6.0",
+    "graph_database": "Neo4j-community 3.5.5",
     "random_seed": 42
   },
   "hyperparameters": {
@@ -21,14 +21,12 @@
       "learning_rate": 3e-5,
       "batch_size": 256,
       "epochs": 240,
-      "early_stopping": true,
-      "description": "Extracts global semantic representations and temporal dependencies."
+      "description": "Encoder for multi-source NEV diagnostic text."
     },
-    "TextCNN_Intent_Module": {
+    "TextCNN_Intent": {
       "kernel_sizes": [2, 3, 4],
       "filters": 128,
-      "dropout_rate": 0.5,
-      "description": "Prevents overfitting in the intent classification layer and extracts multi-scale features."
+      "dropout_rate": 0.5
     }
   },
   "alignment_strategy": {
@@ -36,6 +34,6 @@
       "alpha_dice": 0.70,
       "beta_cosine": 0.30
     },
-    "note": "Weights are distributed to address high prevalence of synonymous terms and morphological variations in NEV domain."
+    "note": "Weights are optimized for Chinese NEV terminology morphological (Dice) and semantic (BERT) fusion."
   }
 }
