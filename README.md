@@ -41,7 +41,7 @@ This research is conducted using real-world diagnostic records from our industry
 ## ⚙️ Environment Requirements
 
 * **Python:** 3.8+
-* **Hardware:** Tested on Intel i7-11850H (No GPU required for reproduction script)
+* **Hardware:** Hardware: Tested on Intel i7-11850H. (Note: The initial deep learning model fine-tuning was performed on a GPU server. This repository provides the CPU-based deployment and lightweight reproduction environment, so no GPU is required to run the scripts).
 * **Dependencies:** Install the required packages using the following command:
 
     pip install -r requirements.txt
