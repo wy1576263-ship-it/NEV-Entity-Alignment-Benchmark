@@ -7,8 +7,8 @@
   },
   "environment": {
     "os": "Windows 10 (64-bit)",
-    "hardware_platform": "Intel(R) Core(TM) i7-11850H",
-    "gpu": "None (Inference validated on CPU)",
+    "training_hardware": "NVIDIA RTX 3090 GPU (Used for model fine-tuning)",
+    "inference_hardware": "Intel(R) Core(TM) i7-11850H CPU (Used for 150k knowledge extraction & QA deployment)",
     "python_version": "3.8.10",
     "ide": "PyCharm Professional 2021",
     "dl_framework": "TensorFlow 2.6.0",
@@ -19,14 +19,17 @@
     "BERT_BiLSTM_CRF": {
       "transformer_layers": 12,
       "learning_rate": 3e-5,
-      "batch_size": 256,
-      "epochs": 240,
-      "description": "Encoder for multi-source NEV diagnostic text."
+      "batch_size": 32,
+      "max_epochs": 240,
+      "early_stopping": "Triggered around epoch 10-15 to prevent overfitting",
+      "description": "Encoder for multi-source NEV diagnostic text. Trained on GPU."
     },
     "TextCNN_Intent": {
       "kernel_sizes": [2, 3, 4],
       "filters": 128,
-      "dropout_rate": 0.5
+      "dropout_rate": 0.5,
+      "batch_size": 256,
+      "description": "High-concurrency intent parsing. Deployed and validated on CPU."
     }
   },
   "alignment_strategy": {
